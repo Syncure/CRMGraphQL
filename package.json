@@ -1,0 +1,23 @@
+{
+  "name": "crmgraphqlcurso",
+  "version": "1.0.0",
+  "description": "Hecho con GrapghQL",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard Vargas Torres",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.0.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
