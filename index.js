@@ -11,15 +11,16 @@ require('dotenv').config({path: 'variables.env'});
 // Conectar DB
 conectarDB();
 
+const corsOptions = {
+    origin: '*',
+    credentials: true
+};
 
 // Servidor
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    cors: {
-        origin: '*',
-        credentials: true
-    },
+    cors:{corsOptions},
     context: ({req}) => {
         // console.log(req.headers['authorization']);
 
@@ -40,6 +41,7 @@ const server = new ApolloServer({
         }
     }
 });
+
 
 // Arrancar el servidor
 server.listen({port: process.env.PORT || 4000}).then(({url}) => {
