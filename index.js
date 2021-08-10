@@ -1,7 +1,6 @@
 const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./db/schema');
 const resolvers = require('./db/resolvers');
-const cors = require('cors');
 
 const conectarDB = require('./config/db');
 
@@ -12,14 +11,15 @@ require('dotenv').config({path: 'variables.env'});
 // Conectar DB
 conectarDB();
 
-// Habilitar cors
-cors();
-
 
 // Servidor
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    cors: {
+        origin: '*',
+        credentials: true
+    },
     context: ({req}) => {
         // console.log(req.headers['authorization']);
 
