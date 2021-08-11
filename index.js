@@ -11,16 +11,15 @@ require('dotenv').config({path: 'variables.env'});
 // Conectar DB
 conectarDB();
 
-const corsOptions = {
-    origin: '*',
-    credentials: true
-};
-
 // Servidor
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    cors:{corsOptions},
+    cors: {
+        credentials:true,
+        origin: process.env.PAGINA,
+        optionsSuccessStatus:204
+    },
     context: ({req}) => {
         // console.log(req.headers['authorization']);
 
@@ -44,6 +43,6 @@ const server = new ApolloServer({
 
 
 // Arrancar el servidor
-server.listen({port: process.env.PORT || 4000}).then(({url}) => {
+server.listen({ port: process.env.PORT || 4000}).then(({url}) => {
     console.log(`Servidor corriendo ${url}`);
 })
